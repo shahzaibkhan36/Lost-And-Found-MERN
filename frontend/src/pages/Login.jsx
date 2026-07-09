@@ -18,6 +18,7 @@ export default function Login() {
     e.preventDefault();
     setLoading(true);
     setError("");
+
     try {
       await login(email, password);
       navigate("/welcome");
@@ -39,10 +40,14 @@ export default function Login() {
           <FiArrowLeft />
         </button>
 
-        <form onSubmit={handleSubmit} className="glass-card w-full max-w-[500px] p-6 sm:p-8">
+        <form
+          onSubmit={handleSubmit}
+          className="glass-card w-full max-w-[500px] p-6 sm:p-8"
+        >
           <h1 className="gradient-text font-extrabold text-3xl tracking-tight text-center">
             Login
           </h1>
+
           <p className="text-white/70 font-light text-center mt-2 mb-8">
             Access your account to continue
           </p>
@@ -57,6 +62,7 @@ export default function Login() {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
+
             <FormField
               label="Password"
               icon={<FiLock />}
@@ -77,7 +83,11 @@ export default function Login() {
             />
           </div>
 
-          {error && <p className="text-danger font-medium text-sm mt-4">{error}</p>}
+          {error && (
+            <p className="text-danger font-medium text-sm mt-4">
+              {error}
+            </p>
+          )}
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center mt-8">
             <button
@@ -91,7 +101,11 @@ export default function Login() {
                 "Sign In"
               )}
             </button>
-            <Link to="/register" className="btn-ghost py-4 px-8 text-center">
+
+            <Link
+              to="/register"
+              className="btn-ghost py-4 px-8 text-center"
+            >
               Sign Up
             </Link>
           </div>
